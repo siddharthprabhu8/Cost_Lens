@@ -1,0 +1,10 @@
+title = "CostLens secret scanning"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "costlens-openrouter-key"
+description = "OpenRouter API credential"
+regex = '''sk-or-v1-[A-Za-z0-9_-]{20,}'''
+keywords = ["sk-or-v1-"]

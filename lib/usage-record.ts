@@ -32,7 +32,7 @@ export type OpenRouterCompletion = {
   usage?: OpenRouterUsage;
 };
 
-function providerFromModel(model: string) {
+export function providerFromModel(model: string) {
   const prefix = model.split("/")[0]?.toLowerCase();
   const providers: Record<string, string> = {
     openai: "OpenAI",

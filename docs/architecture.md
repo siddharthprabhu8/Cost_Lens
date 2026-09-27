@@ -11,7 +11,7 @@ Your server → CostLens ingestion API → OpenRouter → CostLens local ledger 
 - `lib/openrouter.ts` is the only provider adapter. The OpenRouter API key stays on the CostLens server.
 - `lib/usage-record.ts` holds the provider-neutral record shape.
 - `lib/ledger-store.ts` is the storage boundary. Today it writes a local JSON file; a future SQLite or Postgres adapter can preserve the same API.
-- The dashboard reads the ledger through read-only API routes. It falls back to realistic demo data before the first live record.
+- The dashboard reads the ledger through read-only API routes. Live views remain empty until records are persisted.
 
 ## Data and privacy
 

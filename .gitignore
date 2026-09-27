@@ -1,8 +1,37 @@
-node_modules
-.next
-out
+# Dependencies and generated build output
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+packages/*/dist/
+
+# Server credentials and local environment (only the blank template is public)
 .env*
 !.env.example
-*.tsbuildinfo
+.npmrc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+
+# Workspace profiles, request metadata, exports, and storage backups
 data/.ledger/
-packages/*/dist/
+costlens*usage.csv
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.log
+gitleaks-report*.json
+
+# Machine-specific files and assistant settings
+.DS_Store
+.claude/
+.codex/
+.agents/

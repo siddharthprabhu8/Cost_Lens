@@ -58,10 +58,14 @@ export async function createTrackedCompletion(input: TrackedCompletionInput): Pr
     cache: "no-store",
   });
 
-  const payload = await response.json() as (OpenRouterCompletion & Record<string, unknown>) | { error?: { message?: string } };
+  const payload = await response.json().catch(() => null) as (OpenRouterCompletion & Record<string, unknown>) | { error?: { message?: string } } | null;
   if (!response.ok) {
-    const message = (payload as { error?: { message?: string } }).error?.message;
+    const message = (payload as { error?: { message?: string } } | null)?.error?.message;
     throw new OpenRouterError(message ?? "OpenRouter request failed.", response.status);
+  }
+
+  if (!payload || !("id" in payload) || !("model" in payload)) {
+    throw new OpenRouterError("OpenRouter returned an invalid completion.", 502);
   }
 
   const completion = payload as OpenRouterCompletion & Record<string, unknown>;
